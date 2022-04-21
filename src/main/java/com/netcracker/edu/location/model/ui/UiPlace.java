@@ -1,6 +1,5 @@
 package com.netcracker.edu.location.model.ui;
 
-
 import lombok.Data;
 
 @Data
