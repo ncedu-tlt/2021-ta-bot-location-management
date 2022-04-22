@@ -44,7 +44,7 @@ public class PlaceController {
         return ResponseEntity.ok(placeService.findPlaceByCategory(category));
     }
 
-    @GetMapping("/placeId")
+    @PostMapping("/placeId")
     public ResponseEntity <List<Place>> getPlaceId(@RequestBody int[] placeId) {
         return ResponseEntity.ok(placeService.getPlaceId(placeId));
     }
