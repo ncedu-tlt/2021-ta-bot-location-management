@@ -48,7 +48,4 @@ public class PlaceController {
     public ResponseEntity <List<Place>> getPlaceId(@RequestBody int[] placeId) {
         return ResponseEntity.ok(placeService.getPlaceId(placeId));
     }
-
-
-
 }

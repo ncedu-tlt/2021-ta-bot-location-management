@@ -56,4 +56,5 @@ public class PlaceService {
     public List<Place> getPlaceId(int[] placeId) {
         return placeRepository.findPlaceId(placeId);
     }
+
 }

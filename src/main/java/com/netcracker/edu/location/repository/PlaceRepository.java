@@ -15,6 +15,6 @@ public interface PlaceRepository extends JpaRepository<Place, Integer> {
 
     Place findPlaceByAddress(String address);
 
-    @Query(value = "select * place p where p.id in :placeId", nativeQuery = true)
+    @Query(value = "select * place pl where pl.id in :placeId", nativeQuery = true)
     List<Place> findPlaceId(@Param("placeId") int[] placeId);
 }
