@@ -52,4 +52,8 @@ public class PlaceService {
             throw new PlaceByCategoryNotFoundException();
         } else return place;
     }
+
+    public List<Place> getPlaceId(int[] placeId) {
+        return placeRepository.findPlaceId(placeId);
+    }
 }
