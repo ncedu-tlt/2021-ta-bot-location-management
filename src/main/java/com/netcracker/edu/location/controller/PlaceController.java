@@ -3,11 +3,12 @@ package com.netcracker.edu.location.controller;
 import com.netcracker.edu.location.model.Category;
 import com.netcracker.edu.location.model.Place;
 import com.netcracker.edu.location.model.ui.UiPlace;
-import com.netcracker.edu.location.service.CategoryService;
 import com.netcracker.edu.location.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -16,9 +17,6 @@ public class PlaceController {
 
     @Autowired
     private PlaceService placeService;
-
-    @Autowired
-    public CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<Iterable<Place>> getAllPlaces() {
@@ -40,5 +38,12 @@ public class PlaceController {
         placeService.deletePlace(id);
         return ResponseEntity.accepted().build();
     }
+
+    @GetMapping("/category")
+    public ResponseEntity<List<Place>> findPlaceByCategory(@RequestBody Category category){
+        return ResponseEntity.ok(placeService.findPlaceByCategory(category));
+    }
+
+
 
 }

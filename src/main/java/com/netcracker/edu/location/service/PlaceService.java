@@ -1,5 +1,6 @@
 package com.netcracker.edu.location.service;
 
+import com.netcracker.edu.location.error.PlaceByCategoryNotFoundException;
 import com.netcracker.edu.location.model.Category;
 import com.netcracker.edu.location.model.Place;
 import com.netcracker.edu.location.model.ui.UiPlace;
@@ -8,6 +9,7 @@ import com.netcracker.edu.location.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,4 +46,10 @@ public class PlaceService {
         placeRepository.deleteById(id);
     }
 
+    public List<Place> findPlaceByCategory(Category category) {
+        List<Place> place = placeRepository.findPlaceByCategoryId(category.getId());
+        if (place.isEmpty()) {
+            throw new PlaceByCategoryNotFoundException();
+        } else return place;
+    }
 }
