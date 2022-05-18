@@ -39,7 +39,7 @@ public class PlaceController {
         return ResponseEntity.accepted().build();
     }
 
-    @GetMapping("/category")
+    @PostMapping("/category")
     public ResponseEntity<List<Place>> findPlaceByCategory(@RequestBody Category category){
         return ResponseEntity.ok(placeService.findPlaceByCategory(category));
     }
