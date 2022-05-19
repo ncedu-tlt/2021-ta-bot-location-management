@@ -23,14 +23,19 @@ public class PlaceController {
         return ResponseEntity.ok(placeService.getPlaces());
     }
 
-    @GetMapping("/{address}")
-    public ResponseEntity<Place> getPlaceById(@PathVariable("address") String address) {
-        return ResponseEntity.ok(placeService.getPlaceByAddress(address));
+    @PostMapping("/address")
+    public ResponseEntity<Place> getPlaceByAddress(@RequestBody UiPlace uiPlace) {
+        return ResponseEntity.ok(placeService.getPlaceByAddress(uiPlace));
+    }
+
+    @PostMapping("/name")
+    public ResponseEntity<Place> getPlaceByName(@RequestBody UiPlace uiPlace) {
+        return ResponseEntity.ok(placeService.getPlaceByName(uiPlace));
     }
 
     @PostMapping
-    public ResponseEntity<Place> createPlace(@RequestBody UiPlace uiPlace, Category category) {
-        return ResponseEntity.ok(placeService.createPlace(uiPlace, category));
+    public ResponseEntity<Place> createPlace(@RequestBody UiPlace uiPlace) {
+        return ResponseEntity.ok(placeService.createPlace(uiPlace));
     }
 
     @DeleteMapping("/{id}")
@@ -39,7 +44,7 @@ public class PlaceController {
         return ResponseEntity.accepted().build();
     }
 
-    @GetMapping("/category")
+    @PostMapping("/category")
     public ResponseEntity<List<Place>> findPlaceByCategory(@RequestBody Category category){
         return ResponseEntity.ok(placeService.findPlaceByCategory(category));
     }

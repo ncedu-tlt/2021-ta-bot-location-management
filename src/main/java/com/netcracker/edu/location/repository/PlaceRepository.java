@@ -1,6 +1,7 @@
 package com.netcracker.edu.location.repository;
 
 import com.netcracker.edu.location.model.Place;
+import com.netcracker.edu.location.model.ui.UiPlace;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,8 +14,10 @@ public interface PlaceRepository extends JpaRepository<Place, Integer> {
 
     List<Place> findPlaceByCategoryId(int categoryId);
 
-    Place findPlaceByAddress(String address);
+    Place findPlaceByAddressAndCity(String address, String city);
 
-    @Query(value = "select * place pl where pl.id in :placeId", nativeQuery = true)
+    @Query(value = "select * from place pl where pl.id in :placeId", nativeQuery = true)
     List<Place> findPlaceId(@Param("placeId") int[] placeId);
+
+    Place findPlaceByNameAndCity(String name, String city);
 }

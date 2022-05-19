@@ -18,11 +18,12 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column
+    @Column(name = "city")
     private String city;
-    @Column
+    @Column(name = "address")
     private String address;
-
+    @Column(name = "name")
+    private String name;
 
     @ManyToOne()
     @JoinColumn(name = "category_id")
@@ -33,6 +34,7 @@ public class Place {
         setCity(uiPlace.getCity());
         setAddress(uiPlace.getAddress());
         setCategory(category);
+        setName(uiPlace.getName());
     }
 
 

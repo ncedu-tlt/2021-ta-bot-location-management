@@ -29,12 +29,16 @@ public class PlaceService {
         return placeRepository.findById(id);
     }
 
-    public Place getPlaceByAddress(String address){
-        return placeRepository.findPlaceByAddress(address);
+    public Place getPlaceByAddress(UiPlace uiPlace){
+        return placeRepository.findPlaceByAddressAndCity(uiPlace.getAddress(),uiPlace.getCity());
     }
 
-    public Place createPlace(UiPlace uiPlace, Category category) {
-        category = categoryService.findCategoryByName(uiPlace.getCategoryName());
+    public Place getPlaceByName(UiPlace uiPlace) {
+        return placeRepository.findPlaceByNameAndCity(uiPlace.getName(), uiPlace.getCity());
+    }
+
+    public Place createPlace(UiPlace uiPlace) {
+        Category category = categoryService.findCategoryByName(uiPlace.getCategoryName());
         return placeRepository.saveAndFlush(new Place(uiPlace, category));
     }
 
@@ -56,5 +60,6 @@ public class PlaceService {
     public List<Place> getPlaceId(int[] placeId) {
         return placeRepository.findPlaceId(placeId);
     }
+
 
 }
