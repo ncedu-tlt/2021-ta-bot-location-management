@@ -62,4 +62,7 @@ public class PlaceService {
     }
 
 
+    public Place findPlaceById(int id) {
+        return placeRepository.findPlaceById(id);
+    }
 }

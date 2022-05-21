@@ -20,4 +20,6 @@ public interface PlaceRepository extends JpaRepository<Place, Integer> {
     List<Place> findPlaceId(@Param("placeId") int[] placeId);
 
     Place findPlaceByNameAndCity(String name, String city);
+
+    Place findPlaceById(int id);
 }
