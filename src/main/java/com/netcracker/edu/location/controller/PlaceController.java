@@ -53,4 +53,9 @@ public class PlaceController {
     public ResponseEntity <List<Place>> getPlaceId(@RequestBody int[] placeId) {
         return ResponseEntity.ok(placeService.getPlaceId(placeId));
     }
+
+    @GetMapping("/placeId/{id}")
+    public ResponseEntity<Place> getPlaceById(@PathVariable("id") int id){
+        return ResponseEntity.ok(placeService.findPlaceById(id));
+    }
 }
