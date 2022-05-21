@@ -41,12 +41,12 @@ public class PlaceController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Place> deletePlace(@PathVariable("id") int id) {
         placeService.deletePlace(id);
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/category")
     public ResponseEntity<List<Place>> findPlaceByCategory(@RequestBody Category category){
-        return ResponseEntity.ok(placeService.findPlaceByCategory(category));
+        return ResponseEntity.ok(placeService.findPlaceByName(category));
     }
 
     @PostMapping("/placeId")

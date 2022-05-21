@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, Integer> {
 
-    List<Place> findPlaceByCategoryId(int categoryId);
+    List<Place> findPlaceByName(String categoryName);
 
     Place findPlaceByAddressAndCity(String address, String city);
 

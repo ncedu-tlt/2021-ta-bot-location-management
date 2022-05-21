@@ -50,8 +50,8 @@ public class PlaceService {
         placeRepository.deleteById(id);
     }
 
-    public List<Place> findPlaceByCategory(Category category) {
-        List<Place> place = placeRepository.findPlaceByCategoryId(category.getId());
+    public List<Place> findPlaceByName(Category category) {
+        List<Place> place = placeRepository.findPlaceByName(category.getName());
         if (place.isEmpty()) {
             throw new PlaceByCategoryNotFoundException();
         } else return place;
