@@ -1,7 +1,6 @@
 package com.netcracker.edu.location.repository;
 
 import com.netcracker.edu.location.model.Place;
-import com.netcracker.edu.location.model.ui.UiPlace;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, Integer> {
 
-    List<Place> findPlaceByName(String categoryName);
+    List<Place> findPlaceByCategoryId(int id);
 
     Place findPlaceByAddressAndCity(String address, String city);
 

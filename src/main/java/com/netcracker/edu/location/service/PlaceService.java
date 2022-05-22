@@ -51,7 +51,8 @@ public class PlaceService {
     }
 
     public List<Place> findPlaceByName(Category category) {
-        List<Place> place = placeRepository.findPlaceByName(category.getName());
+        Category categoryName = categoryService.findCategoryByName(category.getName());
+        List<Place> place = placeRepository.findPlaceByCategoryId(categoryName.getId());
         if (place.isEmpty()) {
             throw new PlaceByCategoryNotFoundException();
         } else return place;
